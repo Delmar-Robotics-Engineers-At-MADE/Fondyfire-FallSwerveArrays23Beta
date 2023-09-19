@@ -30,24 +30,24 @@ public final class Constants {
 
   public static final class CanConstants {
 
-    public static final int FRONT_LEFT_MODULE_DRIVE_MOTOR = 4;
-    public static final int FRONT_LEFT_MODULE_STEER_MOTOR = 5;
-    public static final int FRONT_LEFT_MODULE_STEER_CANCODER = 6;
+    public static final int FRONT_LEFT_MODULE_DRIVE_MOTOR = 2;
+    public static final int FRONT_LEFT_MODULE_STEER_MOTOR = 12;
+    public static final int FRONT_LEFT_MODULE_STEER_CANCODER = 22;
     public static final double FRONT_LEFT_MODULE_STEER_OFFSET = 231.5;// -Math.toRadians(0.0);
 
-    public static final int FRONT_RIGHT_MODULE_DRIVE_MOTOR = 7;
-    public static final int FRONT_RIGHT_MODULE_STEER_MOTOR = 8;
-    public static final int FRONT_RIGHT_MODULE_STEER_CANCODER = 9;
+    public static final int FRONT_RIGHT_MODULE_DRIVE_MOTOR = 1;
+    public static final int FRONT_RIGHT_MODULE_STEER_MOTOR = 11;
+    public static final int FRONT_RIGHT_MODULE_STEER_CANCODER = 21;
     public static final double FRONT_RIGHT_MODULE_STEER_OFFSET = 317;// -Math.toRadians(-42);
 
-    public static final int BACK_LEFT_MODULE_DRIVE_MOTOR = 10;
-    public static final int BACK_LEFT_MODULE_STEER_MOTOR = 11;
-    public static final int BACK_LEFT_MODULE_STEER_CANCODER = 12;
+    public static final int BACK_LEFT_MODULE_DRIVE_MOTOR = 3;
+    public static final int BACK_LEFT_MODULE_STEER_MOTOR = 13;
+    public static final int BACK_LEFT_MODULE_STEER_CANCODER = 23;
     public static final double BACK_LEFT_MODULE_STEER_OFFSET = 181.1;// -Math.toRadians(0.0);
 
-    public static final int BACK_RIGHT_MODULE_DRIVE_MOTOR = 13;
+    public static final int BACK_RIGHT_MODULE_DRIVE_MOTOR = 4;
     public static final int BACK_RIGHT_MODULE_STEER_MOTOR = 14;
-    public static final int BACK_RIGHT_MODULE_STEER_CANCODER = 15;
+    public static final int BACK_RIGHT_MODULE_STEER_CANCODER = 24;
     public static final double BACK_RIGHT_MODULE_STEER_OFFSET = 253.7;// -Math.toRadians(-105);
 
   }
@@ -153,7 +153,7 @@ public final class Constants {
 
     public static double mk4iL1DriveGearRatio = 1 / ((14.0 / 50.0) * (25.0 / 19.0) * (15.0 / 45.0));// 8.14 .122807
 
-    public static double mk4iL1TurnGearRatio = 1 / ((14.0 / 50.0) * (10.0 / 60.0));// 21.43 1/.046667
+    public static double mk4iL1TurnGearRatio = 100; // 60 per Adam, then changed 3 cartridge to 5, was 1 / ((14.0 / 50.0) * (10.0 / 60.0));// 21.43 1/.046667
 
     public static final double kDriveMetersPerEncRev =
 
