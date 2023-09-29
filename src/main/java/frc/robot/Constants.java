@@ -266,4 +266,16 @@ public final class Constants {
   }
 
   public static final int LED_CONTROLLER_PORT = 1;
+
+  public static final class IntakeConstants {
+    public static final int ID = 5;
+    public static final double inSpeed = 0.7;
+    public static final double outSpeed = 0.7;
+  }
+
+  public static final class PusherConstants {
+    public static final double kHomePos = 0.0;
+    public static final double kLimit = 5;
+    public static final double kPushPos = 5;
+  }
 }
