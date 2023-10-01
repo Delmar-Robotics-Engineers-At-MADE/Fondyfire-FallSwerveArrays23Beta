@@ -55,11 +55,11 @@ public class JogTurnModule extends CommandBase {
 
     m_swerveDrive.m_frontLeft.turnMotorMove(throttle);
 
-    m_swerveDrive.m_frontRight.turnMotorMove(strafe);
+    // m_swerveDrive.m_frontRight.turnMotorMove(strafe);
 
-    m_swerveDrive.m_backLeft.turnMotorMove(rotation);
+    // m_swerveDrive.m_backLeft.turnMotorMove(rotation);
 
-    m_swerveDrive.m_backRight.turnMotorMove(test);
+    // m_swerveDrive.m_backRight.turnMotorMove(test);
 
   }
 
@@ -68,11 +68,11 @@ public class JogTurnModule extends CommandBase {
   public void end(boolean interrupted) {
     m_swerveDrive.m_frontLeft.turnMotorMove(0);
 
-    m_swerveDrive.m_frontRight.turnMotorMove(0);
+    // m_swerveDrive.m_frontRight.turnMotorMove(0);
 
-    m_swerveDrive.m_backLeft.turnMotorMove(0);
+    // m_swerveDrive.m_backLeft.turnMotorMove(0);
 
-    m_swerveDrive.m_backRight.turnMotorMove(0);
+    // m_swerveDrive.m_backRight.turnMotorMove(0);
 
   }
 

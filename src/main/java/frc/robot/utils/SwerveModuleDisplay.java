@@ -41,33 +41,33 @@ public class SwerveModuleDisplay extends SubsystemBase {
         builder.addDoubleProperty("m_fl_drive_velocity", m_drive.m_frontLeft::getDriveVelocity, null);
         builder.addDoubleProperty("m_fl_drive_position", m_drive.m_frontLeft::getDrivePosition, null);
 
-        builder.addBooleanProperty("m_fr_can_ok", m_drive.m_frontRight::checkCAN, null);
-        builder.addBooleanProperty("m_fr_turn_stopped", m_drive.m_frontRight::turnIsStopped, null);
+        // builder.addBooleanProperty("m_fr_can_ok", m_drive.m_frontRight::checkCAN, null);
+        // builder.addBooleanProperty("m_fr_turn_stopped", m_drive.m_frontRight::turnIsStopped, null);
 
-        builder.addDoubleProperty("m_fr_turn_velocity", m_drive.m_frontRight::getTurnVelocity, null);
-        builder.addDoubleProperty("m_fr_turn_angle", m_drive.m_frontRight::getTurnPosition, null);
+        // builder.addDoubleProperty("m_fr_turn_velocity", m_drive.m_frontRight::getTurnVelocity, null);
+        // builder.addDoubleProperty("m_fr_turn_angle", m_drive.m_frontRight::getTurnPosition, null);
 
-        builder.addDoubleProperty("m_fr_drive_velocity", m_drive.m_frontRight::getDriveVelocity, null);
-        builder.addDoubleProperty("m_fr_drive_position", m_drive.m_frontRight::getDrivePosition, null);
+        // builder.addDoubleProperty("m_fr_drive_velocity", m_drive.m_frontRight::getDriveVelocity, null);
+        // builder.addDoubleProperty("m_fr_drive_position", m_drive.m_frontRight::getDrivePosition, null);
 
         // back
 
-        builder.addBooleanProperty("m_bl_can_ok", m_drive.m_backLeft::checkCAN, null);
-        builder.addBooleanProperty("m_bl_turn_stopped", m_drive.m_backLeft::turnIsStopped, null);
+        // builder.addBooleanProperty("m_bl_can_ok", m_drive.m_backLeft::checkCAN, null);
+        // builder.addBooleanProperty("m_bl_turn_stopped", m_drive.m_backLeft::turnIsStopped, null);
 
-        builder.addDoubleProperty("m_bl_turn_velocity", m_drive.m_backLeft::getTurnVelocity, null);
-        builder.addDoubleProperty("m_bl_turn_angle", m_drive.m_backLeft::getTurnPosition, null);
+        // builder.addDoubleProperty("m_bl_turn_velocity", m_drive.m_backLeft::getTurnVelocity, null);
+        // builder.addDoubleProperty("m_bl_turn_angle", m_drive.m_backLeft::getTurnPosition, null);
 
-        builder.addDoubleProperty("m_bl_drive_velocity", m_drive.m_backLeft::getDriveVelocity, null);
-        builder.addDoubleProperty("m_bl_drive_position", m_drive.m_backLeft::getDrivePosition, null);
+        // builder.addDoubleProperty("m_bl_drive_velocity", m_drive.m_backLeft::getDriveVelocity, null);
+        // builder.addDoubleProperty("m_bl_drive_position", m_drive.m_backLeft::getDrivePosition, null);
 
-        builder.addBooleanProperty("m_br_can_ok", m_drive.m_backRight::checkCAN, null);
-        builder.addBooleanProperty("m_br_turn_stopped", m_drive.m_backRight::turnIsStopped, null);
+        // builder.addBooleanProperty("m_br_can_ok", m_drive.m_backRight::checkCAN, null);
+        // builder.addBooleanProperty("m_br_turn_stopped", m_drive.m_backRight::turnIsStopped, null);
 
-        builder.addDoubleProperty("m_br_turn_velocity", m_drive.m_backRight::getTurnVelocity, null);
-        builder.addDoubleProperty("m_br_turn_angle", m_drive.m_backRight::getTurnPosition, null);
+        // builder.addDoubleProperty("m_br_turn_velocity", m_drive.m_backRight::getTurnVelocity, null);
+        // builder.addDoubleProperty("m_br_turn_angle", m_drive.m_backRight::getTurnPosition, null);
 
-        builder.addDoubleProperty("m_br_drive_velocity", m_drive.m_backRight::getDriveVelocity, null);
-        builder.addDoubleProperty("m_br_drive_position", m_drive.m_backRight::getDrivePosition, null);
+        // builder.addDoubleProperty("m_br_drive_velocity", m_drive.m_backRight::getDriveVelocity, null);
+        // builder.addDoubleProperty("m_br_drive_position", m_drive.m_backRight::getDrivePosition, null);
     }
 }

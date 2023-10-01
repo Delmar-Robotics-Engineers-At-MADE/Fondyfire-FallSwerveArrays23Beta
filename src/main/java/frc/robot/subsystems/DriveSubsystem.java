@@ -48,38 +48,38 @@ public class DriveSubsystem extends SubsystemBase {
 
       CanConstants.FRONT_LEFT_MODULE_STEER_OFFSET);
 
-  public final SwerveModuleSparkMax m_frontRight = new SwerveModuleSparkMax(
-      IDConstants.FRONT_RIGHT_LOCATION,
-      CanConstants.FRONT_RIGHT_MODULE_DRIVE_MOTOR,
-      CanConstants.FRONT_RIGHT_MODULE_STEER_MOTOR,
-      CanConstants.FRONT_RIGHT_MODULE_STEER_CANCODER,
-      DriveConstants.kFrontRightDriveMotorReversed,
-      DriveConstants.kFrontRightTurningMotorReversed,
-      PDPConstants.FRONT_RIGHT_DRIVE_CHANNEL,
-      PDPConstants.FRONT_RIGHT_TURN_CHANNEL,
-      CanConstants.FRONT_RIGHT_MODULE_STEER_OFFSET);
+  // public final SwerveModuleSparkMax m_frontRight = new SwerveModuleSparkMax(
+  //     IDConstants.FRONT_RIGHT_LOCATION,
+  //     CanConstants.FRONT_RIGHT_MODULE_DRIVE_MOTOR,
+  //     CanConstants.FRONT_RIGHT_MODULE_STEER_MOTOR,
+  //     CanConstants.FRONT_RIGHT_MODULE_STEER_CANCODER,
+  //     DriveConstants.kFrontRightDriveMotorReversed,
+  //     DriveConstants.kFrontRightTurningMotorReversed,
+  //     PDPConstants.FRONT_RIGHT_DRIVE_CHANNEL,
+  //     PDPConstants.FRONT_RIGHT_TURN_CHANNEL,
+  //     CanConstants.FRONT_RIGHT_MODULE_STEER_OFFSET);
 
-  public final SwerveModuleSparkMax m_backLeft = new SwerveModuleSparkMax(
-      IDConstants.REAR_LEFT_LOCATION,
-      CanConstants.BACK_LEFT_MODULE_DRIVE_MOTOR,
-      CanConstants.BACK_LEFT_MODULE_STEER_MOTOR,
-      CanConstants.BACK_LEFT_MODULE_STEER_CANCODER,
-      DriveConstants.kBackLeftDriveMotorReversed,
-      DriveConstants.kBackLeftTurningMotorReversed,
-      PDPConstants.BACK_LEFT_DRIVE_CHANNEL,
-      PDPConstants.BACK_LEFT_TURN_CHANNEL,
-      CanConstants.BACK_LEFT_MODULE_STEER_OFFSET);
+  // public final SwerveModuleSparkMax m_backLeft = new SwerveModuleSparkMax(
+  //     IDConstants.REAR_LEFT_LOCATION,
+  //     CanConstants.BACK_LEFT_MODULE_DRIVE_MOTOR,
+  //     CanConstants.BACK_LEFT_MODULE_STEER_MOTOR,
+  //     CanConstants.BACK_LEFT_MODULE_STEER_CANCODER,
+  //     DriveConstants.kBackLeftDriveMotorReversed,
+  //     DriveConstants.kBackLeftTurningMotorReversed,
+  //     PDPConstants.BACK_LEFT_DRIVE_CHANNEL,
+  //     PDPConstants.BACK_LEFT_TURN_CHANNEL,
+  //     CanConstants.BACK_LEFT_MODULE_STEER_OFFSET);
 
-  public final SwerveModuleSparkMax m_backRight = new SwerveModuleSparkMax(
-      IDConstants.REAR_RIGHT_LOCATION,
-      CanConstants.BACK_RIGHT_MODULE_DRIVE_MOTOR,
-      CanConstants.BACK_RIGHT_MODULE_STEER_MOTOR,
-      CanConstants.BACK_RIGHT_MODULE_STEER_CANCODER,
-      DriveConstants.kBackRightDriveMotorReversed,
-      DriveConstants.kBackRightTurningMotorReversed,
-      PDPConstants.BACK_LEFT_DRIVE_CHANNEL,
-      PDPConstants.BACK_LEFT_TURN_CHANNEL,
-      CanConstants.BACK_RIGHT_MODULE_STEER_OFFSET);
+  // public final SwerveModuleSparkMax m_backRight = new SwerveModuleSparkMax(
+  //     IDConstants.REAR_RIGHT_LOCATION,
+  //     CanConstants.BACK_RIGHT_MODULE_DRIVE_MOTOR,
+  //     CanConstants.BACK_RIGHT_MODULE_STEER_MOTOR,
+  //     CanConstants.BACK_RIGHT_MODULE_STEER_CANCODER,
+  //     DriveConstants.kBackRightDriveMotorReversed,
+  //     DriveConstants.kBackRightTurningMotorReversed,
+  //     PDPConstants.BACK_LEFT_DRIVE_CHANNEL,
+  //     PDPConstants.BACK_LEFT_TURN_CHANNEL,
+  //     CanConstants.BACK_RIGHT_MODULE_STEER_OFFSET);
 
   // The gyro sensor
 
@@ -101,10 +101,10 @@ public class DriveSubsystem extends SubsystemBase {
       m_kinematics,
       m_gyro.getRotation2d(),
       new SwerveModulePosition[] {
-          m_frontLeft.getPosition(),
-          m_frontRight.getPosition(),
-          m_backLeft.getPosition(),
-          m_backRight.getPosition()
+        m_frontLeft.getPosition(),
+          new SwerveModulePosition(0.0, new Rotation2d()),
+          new SwerveModulePosition(0.0, new Rotation2d()),
+          new SwerveModulePosition(0.0, new Rotation2d())
       },
       new Pose2d(),
       VecBuilder.fill(0.05, 0.05, Units.degreesToRadians(5)),
@@ -187,9 +187,9 @@ public class DriveSubsystem extends SubsystemBase {
             : new ChassisSpeeds(xSpeed, ySpeed, rot));
     SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveConstants.kMaxSpeedMetersPerSecond);
     m_frontLeft.setDesiredState(swerveModuleStates[0], isOpenLoop);
-    m_frontRight.setDesiredState(swerveModuleStates[1], isOpenLoop);
-    m_backLeft.setDesiredState(swerveModuleStates[2], isOpenLoop);
-    m_backRight.setDesiredState(swerveModuleStates[3], isOpenLoop);
+    // m_frontRight.setDesiredState(swerveModuleStates[1], isOpenLoop);
+    // m_backLeft.setDesiredState(swerveModuleStates[2], isOpenLoop);
+    // m_backRight.setDesiredState(swerveModuleStates[3], isOpenLoop);
   }
 
   /**
@@ -200,10 +200,10 @@ public class DriveSubsystem extends SubsystemBase {
   public void setModuleStates(SwerveModuleState[] desiredStates) {
     SwerveDriveKinematics.desaturateWheelSpeeds(
         desiredStates, DriveConstants.kMaxSpeedMetersPerSecond);
-    m_frontLeft.setDesiredState(desiredStates[0], isOpenLoop);
-    m_frontRight.setDesiredState(desiredStates[1], isOpenLoop);
-    m_backLeft.setDesiredState(desiredStates[2], isOpenLoop);
-    m_backRight.setDesiredState(desiredStates[3], isOpenLoop);
+        m_frontLeft.setDesiredState(desiredStates[0], isOpenLoop);
+    // m_frontRight.setDesiredState(desiredStates[1], isOpenLoop);
+    // m_backLeft.setDesiredState(desiredStates[2], isOpenLoop);
+    // m_backRight.setDesiredState(desiredStates[3], isOpenLoop);
   }
 
   @Override
@@ -250,9 +250,9 @@ public class DriveSubsystem extends SubsystemBase {
           m_gyro.getRotation2d(),
           new SwerveModulePosition[] {
               m_frontLeft.getPosition(),
-              m_frontRight.getPosition(),
-              m_backLeft.getPosition(),
-              m_backRight.getPosition()
+              new SwerveModulePosition(0.0, new Rotation2d()),
+              new SwerveModulePosition(0.0, new Rotation2d()),
+              new SwerveModulePosition(0.0, new Rotation2d())
           });
 
       // Also apply vision measurements. We use 0.3 seconds in the past as an example
@@ -274,9 +274,9 @@ public class DriveSubsystem extends SubsystemBase {
     m_poseEstimator.resetPosition(getHeadingRotation2d(),
         new SwerveModulePosition[] {
             m_frontLeft.getPosition(),
-            m_frontRight.getPosition(),
-            m_backLeft.getPosition(),
-            m_backRight.getPosition() },
+            new SwerveModulePosition(0.0, new Rotation2d()),
+            new SwerveModulePosition(0.0, new Rotation2d()),
+            new SwerveModulePosition(0.0, new Rotation2d()) },
         pose);
     m_gyro.reset();
 
@@ -301,18 +301,18 @@ public class DriveSubsystem extends SubsystemBase {
 
   public boolean checkCANOK() {
     return RobotBase.isSimulation() ||
-        m_frontLeft.checkCAN()
-            && m_frontRight.checkCAN()
-            && m_backLeft.checkCAN()
-            && m_backLeft.checkCAN();
+        m_frontLeft.checkCAN();
+            // && m_frontRight.checkCAN()
+            // && m_backLeft.checkCAN()
+            // && m_backLeft.checkCAN();
 
   }
 
   public void resetModuleEncoders() {
     m_frontLeft.resetAngleToAbsolute();
-    m_frontRight.resetAngleToAbsolute();
-    m_backLeft.resetAngleToAbsolute();
-    m_backRight.resetAngleToAbsolute();
+    // m_frontRight.resetAngleToAbsolute();
+    // m_backLeft.resetAngleToAbsolute();
+    // m_backRight.resetAngleToAbsolute();
   }
 
   /** Zeroes the heading of the robot. */
@@ -364,12 +364,12 @@ public class DriveSubsystem extends SubsystemBase {
 
     m_frontLeft.setDriveBrakeMode(brake);
     m_frontLeft.setTurnBrakeMode(brake);
-    m_frontRight.setDriveBrakeMode(brake);
-    m_frontRight.setTurnBrakeMode(brake);
-    m_backLeft.setDriveBrakeMode(brake);
-    m_backLeft.setTurnBrakeMode(brake);
-    m_backRight.setDriveBrakeMode(brake);
-    m_backRight.setTurnBrakeMode(brake);
+    // m_frontRight.setDriveBrakeMode(brake);
+    // m_frontRight.setTurnBrakeMode(brake);
+    // m_backLeft.setDriveBrakeMode(brake);
+    // m_backLeft.setTurnBrakeMode(brake);
+    // m_backRight.setDriveBrakeMode(brake);
+    // m_backRight.setTurnBrakeMode(brake);
 
   }
 
@@ -380,9 +380,9 @@ public class DriveSubsystem extends SubsystemBase {
 
         new SwerveModuleState[] {
             m_frontLeft.getState(),
-            m_frontRight.getState(),
-            m_backLeft.getState(),
-            m_backRight.getState()
+            new SwerveModuleState(0.0, new Rotation2d()),
+            new SwerveModuleState(0.0, new Rotation2d()),
+            new SwerveModuleState(0.0, new Rotation2d())
         });
     // want to simulate navX gyro changing as robot turns
     // information available is radians per second and this happens every 20ms

@@ -29,9 +29,9 @@ public class FieldSim {
     m_swerveDrive = swerveDrive;
 
     modules[0] = m_swerveDrive.m_frontLeft;
-    modules[1] = m_swerveDrive.m_frontRight;
-    modules[2] = m_swerveDrive.m_backLeft;
-    modules[3] = m_swerveDrive.m_backRight;
+    // modules[1] = m_swerveDrive.m_frontRight;
+    // modules[2] = m_swerveDrive.m_backLeft;
+    // modules[3] = m_swerveDrive.m_backRight;
   }
 
   private int tst;
