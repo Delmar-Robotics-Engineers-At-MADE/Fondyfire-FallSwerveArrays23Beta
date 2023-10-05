@@ -278,9 +278,9 @@ public class SwerveModuleSparkMax extends SubsystemBase {
   }
 
   public void tunePosGains() {
-    m_turnController.setP(Pref.getPref("SwerveTurnPoskP"));
+    m_turnController.setP(0.0034);
     m_turnController.setI(Pref.getPref("SwerveTurnPoskI"));
-    m_turnController.setD(Pref.getPref("SwerveTurnPoskD"));
+    m_turnController.setD(0.0000034);
     // m_turnController.setIZone(Pref.getPref("SwerveTurnPoskIz"));
   }
 
