@@ -87,6 +87,11 @@ public final class Constants {
     public static final boolean kFrontRightDriveMotorReversed = true;
     public static final boolean kBackRightDriveMotorReversed = true;
 
+    public static final boolean kFrontLeftCancoderDirection = false;  // False means positive rotation occurs when magnet is spun counter - clockwise when observer is facing the LED side of CANCoder.
+    public static final boolean kBackLeftCancoderDirection = false;
+    public static final boolean kFrontRightCancoderDirection = false;
+    public static final boolean kBackRightCancoderDirection = false;
+
     public static final double kTrackWidth = Units.inchesToMeters(22);
     // Distance between centers of right and left wheels on robot
     public static final double kWheelBase = Units.inchesToMeters(27);
