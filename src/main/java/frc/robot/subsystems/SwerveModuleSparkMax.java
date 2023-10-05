@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.sensors.CANCoderConfiguration;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMax.IdleMode;
@@ -120,6 +121,7 @@ public class SwerveModuleSparkMax extends SubsystemBase {
       int cancoderCanChannel,
       boolean driveMotorReversed,
       boolean turningMotorReversed,
+      boolean cancoderDirection,
       int pdpCDrivehannel,
       int pdpTurnChannel,
       double turningEncoderOffset) {
@@ -145,7 +147,10 @@ public class SwerveModuleSparkMax extends SubsystemBase {
     // absolute encoder used to establish known wheel position on start position
     m_turnCANcoder = new CTRECanCoder(cancoderCanChannel);
     m_turnCANcoder.configFactoryDefault();
-    m_turnCANcoder.configAllSettings(AngleUtils.generateCanCoderConfig());
+    CANCoderConfiguration cancoderSettings = AngleUtils.generateCanCoderConfig();
+    cancoderSettings.sensorDirection = cancoderDirection;
+    m_turnCANcoder.configAllSettings(cancoderSettings);
+
     m_turningEncoderOffset = turningEncoderOffset;
 
     m_driveMotor.setInverted(driveMotorReversed);

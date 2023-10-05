@@ -43,6 +43,7 @@ public class DriveSubsystem extends SubsystemBase {
       CanConstants.FRONT_LEFT_MODULE_STEER_CANCODER,
       DriveConstants.kFrontLeftDriveMotorReversed,
       DriveConstants.kFrontLeftTurningMotorReversed,
+      DriveConstants.kFrontLeftCancoderDirection,
       PDPConstants.FRONT_LEFT_DRIVE_CHANNEL,
       PDPConstants.FRONT_LEFT_TURN_CHANNEL,
 
@@ -55,6 +56,7 @@ public class DriveSubsystem extends SubsystemBase {
       CanConstants.FRONT_RIGHT_MODULE_STEER_CANCODER,
       DriveConstants.kFrontRightDriveMotorReversed,
       DriveConstants.kFrontRightTurningMotorReversed,
+      DriveConstants.kFrontRightCancoderDirection,
       PDPConstants.FRONT_RIGHT_DRIVE_CHANNEL,
       PDPConstants.FRONT_RIGHT_TURN_CHANNEL,
       CanConstants.FRONT_RIGHT_MODULE_STEER_OFFSET);
@@ -66,6 +68,7 @@ public class DriveSubsystem extends SubsystemBase {
       CanConstants.BACK_LEFT_MODULE_STEER_CANCODER,
       DriveConstants.kBackLeftDriveMotorReversed,
       DriveConstants.kBackLeftTurningMotorReversed,
+      DriveConstants.kBackLeftCancoderDirection,
       PDPConstants.BACK_LEFT_DRIVE_CHANNEL,
       PDPConstants.BACK_LEFT_TURN_CHANNEL,
       CanConstants.BACK_LEFT_MODULE_STEER_OFFSET);
@@ -77,6 +80,7 @@ public class DriveSubsystem extends SubsystemBase {
       CanConstants.BACK_RIGHT_MODULE_STEER_CANCODER,
       DriveConstants.kBackRightDriveMotorReversed,
       DriveConstants.kBackRightTurningMotorReversed,
+      DriveConstants.kBackRightCancoderDirection,
       PDPConstants.BACK_LEFT_DRIVE_CHANNEL,
       PDPConstants.BACK_LEFT_TURN_CHANNEL,
       CanConstants.BACK_RIGHT_MODULE_STEER_OFFSET);
