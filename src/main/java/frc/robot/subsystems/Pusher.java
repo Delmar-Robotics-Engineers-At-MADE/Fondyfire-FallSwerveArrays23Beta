@@ -13,13 +13,13 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.PusherConstants;
 
 public class Pusher extends SubsystemBase {
     
     private final CANSparkMax dart;
-    private final DigitalInput limit;
     private final PIDController pid;
     private final AnalogInput pot;
     private final RelativeEncoder encoder;
@@ -30,13 +30,13 @@ public class Pusher extends SubsystemBase {
     public Pusher() {
         dart = new CANSparkMax(20, MotorType.kBrushless);
         dart.setIdleMode(IdleMode.kBrake);
-        limit = new DigitalInput(0);
         pid = new PIDController(0.02, 0, 0);
         pot = new AnalogInput(0);
         encoder = dart.getEncoder();
 
         comp = Shuffleboard.getTab("comp");
         comp.add("Pusher Homed", getState());
+        comp.add("potentiometer", pot.getValue());
         
     }
 
@@ -87,5 +87,9 @@ public class Pusher extends SubsystemBase {
 
     public void runClimberToPos(double pos) {
         dart.set(pid.calculate(pot.getValue(), pos));
+    }
+
+    public void stopPusher() {
+        dart.set(0);
     }
 }

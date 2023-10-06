@@ -11,13 +11,21 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.Constants.OIConstants;
+import frc.robot.commands.PusherOpenLoop;
+import frc.robot.commands.RunIntake;
+import frc.robot.commands.StopIntake;
+import frc.robot.commands.StopPusher;
+import frc.robot.commands.ToggleFieldOriented;
 import frc.robot.commands.Vision.SetDriverMode;
 import frc.robot.commands.swerve.JogDriveModule;
 import frc.robot.commands.swerve.JogTurnModule;
 import frc.robot.commands.swerve.SetSwerveDrive;
 import frc.robot.simulation.FieldSim;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Pusher;
 import frc.robot.subsystems.VisionPoseEstimator;
 import frc.robot.utils.AutoSelect;
 import frc.robot.utils.FFDisplay;
@@ -32,6 +40,10 @@ public class RobotContainer {
   public FFDisplay ff1 = new FFDisplay("test");
 
   public AutoSelect m_autoSelect;
+
+  public Intake intake = new Intake();
+
+  public Pusher pusher = new Pusher();
 
   LEDControllerI2C lcI2;
 
@@ -128,9 +140,24 @@ public class RobotContainer {
         () -> m_coDriverController.getRawAxis(3),
         false));
 
-    JoystickButton button_8 = new JoystickButton(leftJoystick, 8);
-    JoystickButton button_7 = new JoystickButton(leftJoystick, 7);
+    JoystickButton zero = new JoystickButton(leftJoystick, 3);
+    JoystickButton intakeIn= new JoystickButton(leftJoystick, 6);
+    JoystickButton intakeOut = new JoystickButton(leftJoystick, 5);
+    POVButton pusherDeploy = new POVButton(leftJoystick, 180);
+    POVButton pusherRetract = new POVButton(leftJoystick, 0);
 
+
+
+    //subsystem commands
+    zero.whileTrue(new ToggleFieldOriented(m_drive));
+
+    intakeIn.whileTrue(new RunIntake(false, intake));
+    intakeOut.whileTrue(new RunIntake(true, intake));
+    intake.setDefaultCommand(new StopIntake(intake));
+
+    pusher.setDefaultCommand(new StopPusher(pusher));
+    pusherDeploy.whileTrue(new PusherOpenLoop(true, pusher));
+    pusherRetract.whileTrue(new PusherOpenLoop(false, pusher));
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_drive,
     // ModulePosition.FRONT_LEFT));

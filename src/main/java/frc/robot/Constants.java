@@ -33,22 +33,22 @@ public final class Constants {
     public static final int FRONT_LEFT_MODULE_DRIVE_MOTOR = 2;
     public static final int FRONT_LEFT_MODULE_STEER_MOTOR = 12;
     public static final int FRONT_LEFT_MODULE_STEER_CANCODER = 22;
-    public static final double FRONT_LEFT_MODULE_STEER_OFFSET = 218.057;// was 231.5;// -Math.toRadians(0.0);
+    public static final double FRONT_LEFT_MODULE_STEER_OFFSET = 209.619;// was 231.5;// -Math.toRadians(0.0);
 
     public static final int FRONT_RIGHT_MODULE_DRIVE_MOTOR = 1;
     public static final int FRONT_RIGHT_MODULE_STEER_MOTOR = 11;
     public static final int FRONT_RIGHT_MODULE_STEER_CANCODER = 21;
-    public static final double FRONT_RIGHT_MODULE_STEER_OFFSET = 330.293; // was 317;// -Math.toRadians(-42);
+    public static final double FRONT_RIGHT_MODULE_STEER_OFFSET = 324.141; // was 317;// -Math.toRadians(-42);
 
     public static final int BACK_LEFT_MODULE_DRIVE_MOTOR = 3;
     public static final int BACK_LEFT_MODULE_STEER_MOTOR = 13;
     public static final int BACK_LEFT_MODULE_STEER_CANCODER = 23;
-    public static final double BACK_LEFT_MODULE_STEER_OFFSET = 275.713; // was 181.1;// -Math.toRadians(0.0);
+    public static final double BACK_LEFT_MODULE_STEER_OFFSET = 79.189  ; // was 181.1;// -Math.toRadians(0.0);
 
     public static final int BACK_RIGHT_MODULE_DRIVE_MOTOR = 4;
     public static final int BACK_RIGHT_MODULE_STEER_MOTOR = 14;
     public static final int BACK_RIGHT_MODULE_STEER_CANCODER = 24;
-    public static final double BACK_RIGHT_MODULE_STEER_OFFSET = 105.029; // was 253.7;// -Math.toRadians(-105);
+    public static final double BACK_RIGHT_MODULE_STEER_OFFSET = 104.414 ; // was 253.7;// -Math.toRadians(-105);
 
   }
 
@@ -83,7 +83,7 @@ public final class Constants {
     public static final boolean kBackRightTurningMotorReversed = true;
 
     public static final boolean kFrontLeftDriveMotorReversed = false;
-    public static final boolean kBackLeftDriveMotorReversed = true;
+    public static final boolean kBackLeftDriveMotorReversed = false;
     public static final boolean kFrontRightDriveMotorReversed = false;
     public static final boolean kBackRightDriveMotorReversed = false;
 

@@ -182,7 +182,7 @@ public class SwerveModuleSparkMax extends SubsystemBase {
 
     if (RobotBase.isReal()) {
 
-      m_driveVelSMController.setP(.01, VEL_SLOT);
+      m_driveVelSMController.setP(.02, VEL_SLOT);
 
       m_driveVelSMController.setD(0, VEL_SLOT);
 
@@ -283,9 +283,9 @@ public class SwerveModuleSparkMax extends SubsystemBase {
   }
 
   public void tunePosGains() {
-    m_turnController.setP(0.0034);
+    m_turnController.setP(0.01);
     m_turnController.setI(Pref.getPref("SwerveTurnPoskI"));
-    m_turnController.setD(0.0000034);
+    m_turnController.setD(0.00001);
     // m_turnController.setIZone(Pref.getPref("SwerveTurnPoskIz"));
   }
 
