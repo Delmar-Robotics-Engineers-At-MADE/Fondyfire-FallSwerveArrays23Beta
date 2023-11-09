@@ -182,7 +182,7 @@ public class SwerveModuleSparkMax extends SubsystemBase {
 
     if (RobotBase.isReal()) {
 
-      m_driveVelSMController.setP(.02, VEL_SLOT);
+      m_driveVelSMController.setP(.03, VEL_SLOT);
 
       m_driveVelSMController.setD(0, VEL_SLOT);
 

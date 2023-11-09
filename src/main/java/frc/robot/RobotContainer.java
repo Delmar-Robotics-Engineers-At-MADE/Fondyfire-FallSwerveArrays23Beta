@@ -19,10 +19,10 @@ import frc.robot.commands.StopIntake;
 import frc.robot.commands.StopPusher;
 import frc.robot.commands.ToggleFieldOriented;
 import frc.robot.commands.Vision.SetDriverMode;
-import frc.robot.commands.swerve.JogDriveModule;
-import frc.robot.commands.swerve.JogTurnModule;
+// import frc.robot.commands.swerve.JogDriveModule;
+// import frc.robot.commands.swerve.JogTurnModule;
 import frc.robot.commands.swerve.SetSwerveDrive;
-import frc.robot.simulation.FieldSim;
+//import frc.robot.simulation.FieldSim;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Pusher;
@@ -47,7 +47,7 @@ public class RobotContainer {
 
   LEDControllerI2C lcI2;
 
-  public final FieldSim m_fieldSim = new FieldSim(m_drive);
+  //public final FieldSim m_fieldSim = new FieldSim(m_drive);
 
    // The driver's controller
 
@@ -77,7 +77,7 @@ public class RobotContainer {
     LiveWindow.disableAllTelemetry();
     // Configure the button bindings
 
-    m_fieldSim.initSim();
+   // m_fieldSim.initSim();
 
     m_autoSelect = new AutoSelect(m_drive);
 
@@ -115,30 +115,30 @@ public class RobotContainer {
             () -> leftJoystick.getRawAxis(0),
             () -> leftJoystick.getRawAxis(4)));
 
-    codriver.leftTrigger.whileTrue(new JogTurnModule(
-        m_drive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3)));
+    // codriver.leftTrigger.whileTrue(new JogTurnModule(
+    //     m_drive,
+    //     () -> -m_coDriverController.getRawAxis(1),
+    //     () -> m_coDriverController.getRawAxis(0),
+    //     () -> m_coDriverController.getRawAxis(2),
+    //     () -> m_coDriverController.getRawAxis(3)));
 
-    // individual modules
-    codriver.leftBumper.whileTrue(new JogDriveModule(
-        m_drive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3),
-        true));
+    // // individual modules
+    // codriver.leftBumper.whileTrue(new JogDriveModule(
+    //     m_drive,
+    //     () -> -m_coDriverController.getRawAxis(1),
+    //     () -> m_coDriverController.getRawAxis(0),
+    //     () -> m_coDriverController.getRawAxis(2),
+    //     () -> m_coDriverController.getRawAxis(3),
+    //     true));
 
-    // all modules
-    codriver.rightBumper.whileTrue(new JogDriveModule(
-        m_drive,
-        () -> -m_coDriverController.getRawAxis(1),
-        () -> m_coDriverController.getRawAxis(0),
-        () -> m_coDriverController.getRawAxis(2),
-        () -> m_coDriverController.getRawAxis(3),
-        false));
+    // // all modules
+    // codriver.rightBumper.whileTrue(new JogDriveModule(
+    //     m_drive,
+    //     () -> -m_coDriverController.getRawAxis(1),
+    //     () -> m_coDriverController.getRawAxis(0),
+    //     () -> m_coDriverController.getRawAxis(2),
+    //     () -> m_coDriverController.getRawAxis(3),
+    //     false));
 
     JoystickButton zero = new JoystickButton(leftJoystick, 3);
     JoystickButton intakeIn= new JoystickButton(leftJoystick, 6);
@@ -170,14 +170,14 @@ public class RobotContainer {
 
   }
 
-  public void simulationPeriodic() {
+  // public void simulationPeriodic() {
 
-    m_fieldSim.periodic();
-  }
+  //   m_fieldSim.periodic();
+  // }
 
-  public void periodic() {
-    m_fieldSim.periodic();
-  }
+  // public void periodic() {
+  //   m_fieldSim.periodic();
+  // }
 
   public double getThrottle() {
     return -leftJoystick.getThrottle();

@@ -36,54 +36,78 @@ public class DriveSubsystem extends SubsystemBase {
 
   public SwerveDriveKinematics m_kinematics = DriveConstants.m_kinematics;
 
-  public final SwerveModuleSparkMax m_frontLeft = new SwerveModuleSparkMax(
-      IDConstants.FRONT_LEFT_LOCATION,
-      CanConstants.FRONT_LEFT_MODULE_DRIVE_MOTOR,
-      CanConstants.FRONT_LEFT_MODULE_STEER_MOTOR,
-      CanConstants.FRONT_LEFT_MODULE_STEER_CANCODER,
-      DriveConstants.kFrontLeftDriveMotorReversed,
-      DriveConstants.kFrontLeftTurningMotorReversed,
-      DriveConstants.kFrontLeftCancoderDirection,
-      PDPConstants.FRONT_LEFT_DRIVE_CHANNEL,
-      PDPConstants.FRONT_LEFT_TURN_CHANNEL,
+  // public final SwerveModuleSparkMax m_frontLeft = new SwerveModuleSparkMax(
+  //     IDConstants.FRONT_LEFT_LOCATION,
+  //     CanConstants.FRONT_LEFT_MODULE_DRIVE_MOTOR,
+  //     CanConstants.FRONT_LEFT_MODULE_STEER_MOTOR,
+  //     CanConstants.FRONT_LEFT_MODULE_STEER_CANCODER,
+  //     DriveConstants.kFrontLeftDriveMotorReversed,
+  //     DriveConstants.kFrontLeftTurningMotorReversed,
+  //     DriveConstants.kFrontLeftCancoderDirection,
+  //     PDPConstants.FRONT_LEFT_DRIVE_CHANNEL,
+  //     PDPConstants.FRONT_LEFT_TURN_CHANNEL,
 
-      CanConstants.FRONT_LEFT_MODULE_STEER_OFFSET);
+  //     CanConstants.FRONT_LEFT_MODULE_STEER_OFFSET);
 
-  public final SwerveModuleSparkMax m_frontRight = new SwerveModuleSparkMax(
-      IDConstants.FRONT_RIGHT_LOCATION,
+  // public final SwerveModuleSparkMax m_frontRight = new SwerveModuleSparkMax(
+  //     IDConstants.FRONT_RIGHT_LOCATION,
+  //     CanConstants.FRONT_RIGHT_MODULE_DRIVE_MOTOR,
+  //     CanConstants.FRONT_RIGHT_MODULE_STEER_MOTOR,
+  //     CanConstants.FRONT_RIGHT_MODULE_STEER_CANCODER,
+  //     DriveConstants.kFrontRightDriveMotorReversed,
+  //     DriveConstants.kFrontRightTurningMotorReversed,
+  //     DriveConstants.kFrontRightCancoderDirection,
+  //     PDPConstants.FRONT_RIGHT_DRIVE_CHANNEL,
+  //     PDPConstants.FRONT_RIGHT_TURN_CHANNEL,
+  //     CanConstants.FRONT_RIGHT_MODULE_STEER_OFFSET);
+
+  // public final SwerveModuleSparkMax m_backLeft = new SwerveModuleSparkMax(
+  //     IDConstants.REAR_LEFT_LOCATION,
+  //     CanConstants.BACK_LEFT_MODULE_DRIVE_MOTOR,
+  //     CanConstants.BACK_LEFT_MODULE_STEER_MOTOR,
+  //     CanConstants.BACK_LEFT_MODULE_STEER_CANCODER,
+  //     DriveConstants.kBackLeftDriveMotorReversed,
+  //     DriveConstants.kBackLeftTurningMotorReversed,
+  //     DriveConstants.kBackLeftCancoderDirection,
+  //     PDPConstants.BACK_LEFT_DRIVE_CHANNEL,
+  //     PDPConstants.BACK_LEFT_TURN_CHANNEL,
+  //     CanConstants.BACK_LEFT_MODULE_STEER_OFFSET);
+
+  // public final SwerveModuleSparkMax m_backRight = new SwerveModuleSparkMax(
+  //     IDConstants.REAR_RIGHT_LOCATION,
+  //     CanConstants.BACK_RIGHT_MODULE_DRIVE_MOTOR,
+  //     CanConstants.BACK_RIGHT_MODULE_STEER_MOTOR,
+  //     CanConstants.BACK_RIGHT_MODULE_STEER_CANCODER,
+  //     DriveConstants.kBackRightDriveMotorReversed,
+  //     DriveConstants.kBackRightTurningMotorReversed,
+  //     DriveConstants.kBackRightCancoderDirection,
+  //     PDPConstants.BACK_LEFT_DRIVE_CHANNEL,
+  //     PDPConstants.BACK_LEFT_TURN_CHANNEL,
+  //     CanConstants.BACK_RIGHT_MODULE_STEER_OFFSET);
+
+    public final SwerveModule m_frontLeft = new SwerveModule(
+    CanConstants.FRONT_LEFT_MODULE_DRIVE_MOTOR,
+    CanConstants.FRONT_LEFT_MODULE_STEER_MOTOR,
+    CanConstants.FRONT_LEFT_MODULE_STEER_CANCODER,
+    CanConstants.FRONT_LEFT_MODULE_STEER_OFFSET, false);
+
+    public final SwerveModule m_frontRight = new SwerveModule(
       CanConstants.FRONT_RIGHT_MODULE_DRIVE_MOTOR,
       CanConstants.FRONT_RIGHT_MODULE_STEER_MOTOR,
       CanConstants.FRONT_RIGHT_MODULE_STEER_CANCODER,
-      DriveConstants.kFrontRightDriveMotorReversed,
-      DriveConstants.kFrontRightTurningMotorReversed,
-      DriveConstants.kFrontRightCancoderDirection,
-      PDPConstants.FRONT_RIGHT_DRIVE_CHANNEL,
-      PDPConstants.FRONT_RIGHT_TURN_CHANNEL,
-      CanConstants.FRONT_RIGHT_MODULE_STEER_OFFSET);
+      CanConstants.FRONT_RIGHT_MODULE_STEER_OFFSET, false);
 
-  public final SwerveModuleSparkMax m_backLeft = new SwerveModuleSparkMax(
-      IDConstants.REAR_LEFT_LOCATION,
+    public final SwerveModule m_backLeft = new SwerveModule(
       CanConstants.BACK_LEFT_MODULE_DRIVE_MOTOR,
       CanConstants.BACK_LEFT_MODULE_STEER_MOTOR,
       CanConstants.BACK_LEFT_MODULE_STEER_CANCODER,
-      DriveConstants.kBackLeftDriveMotorReversed,
-      DriveConstants.kBackLeftTurningMotorReversed,
-      DriveConstants.kBackLeftCancoderDirection,
-      PDPConstants.BACK_LEFT_DRIVE_CHANNEL,
-      PDPConstants.BACK_LEFT_TURN_CHANNEL,
-      CanConstants.BACK_LEFT_MODULE_STEER_OFFSET);
+      CanConstants.BACK_LEFT_MODULE_STEER_OFFSET, true);
 
-  public final SwerveModuleSparkMax m_backRight = new SwerveModuleSparkMax(
-      IDConstants.REAR_RIGHT_LOCATION,
+    public final SwerveModule m_backRight = new SwerveModule(
       CanConstants.BACK_RIGHT_MODULE_DRIVE_MOTOR,
       CanConstants.BACK_RIGHT_MODULE_STEER_MOTOR,
       CanConstants.BACK_RIGHT_MODULE_STEER_CANCODER,
-      DriveConstants.kBackRightDriveMotorReversed,
-      DriveConstants.kBackRightTurningMotorReversed,
-      DriveConstants.kBackRightCancoderDirection,
-      PDPConstants.BACK_LEFT_DRIVE_CHANNEL,
-      PDPConstants.BACK_LEFT_TURN_CHANNEL,
-      CanConstants.BACK_RIGHT_MODULE_STEER_OFFSET);
+      CanConstants.BACK_RIGHT_MODULE_STEER_OFFSET, false);
 
   // The gyro sensor
 
@@ -143,7 +167,7 @@ public class DriveSubsystem extends SubsystemBase {
 
     m_gyro.reset();
 
-    resetModuleEncoders();
+    //resetModuleEncoders();
 
     setIdleMode(true);
 
@@ -190,10 +214,10 @@ public class DriveSubsystem extends SubsystemBase {
             ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, rot, m_gyro.getRotation2d())
             : new ChassisSpeeds(xSpeed, ySpeed, rot));
     SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveConstants.kMaxSpeedMetersPerSecond);
-    m_frontLeft.setDesiredState(swerveModuleStates[0], isOpenLoop);
-    m_frontRight.setDesiredState(swerveModuleStates[1], isOpenLoop);
-    m_backLeft.setDesiredState(swerveModuleStates[2], isOpenLoop);
-    m_backRight.setDesiredState(swerveModuleStates[3], isOpenLoop);
+    m_frontLeft.setDesiredState(swerveModuleStates[0]);
+    m_frontRight.setDesiredState(swerveModuleStates[1]);
+    m_backLeft.setDesiredState(swerveModuleStates[2]);
+    m_backRight.setDesiredState(swerveModuleStates[3]);
   }
 
   /**
@@ -204,10 +228,10 @@ public class DriveSubsystem extends SubsystemBase {
   public void setModuleStates(SwerveModuleState[] desiredStates) {
     SwerveDriveKinematics.desaturateWheelSpeeds(
         desiredStates, DriveConstants.kMaxSpeedMetersPerSecond);
-    m_frontLeft.setDesiredState(desiredStates[0], isOpenLoop);
-    m_frontRight.setDesiredState(desiredStates[1], isOpenLoop);
-    m_backLeft.setDesiredState(desiredStates[2], isOpenLoop);
-    m_backRight.setDesiredState(desiredStates[3], isOpenLoop);
+    m_frontLeft.setDesiredState(desiredStates[0]);
+    m_frontRight.setDesiredState(desiredStates[1]);
+    m_backLeft.setDesiredState(desiredStates[2]);
+    m_backRight.setDesiredState(desiredStates[3]);
   }
 
   @Override
@@ -237,16 +261,19 @@ public class DriveSubsystem extends SubsystemBase {
       positionStart = getEstimatedPose().getX();
 
     }
-
+    SmartDashboard.putNumber("fl encoder angle", m_frontLeft.getAbsoluteEncoder());
+    SmartDashboard.putNumber("fr encoder angle", m_frontRight.getAbsoluteEncoder());
+    SmartDashboard.putNumber("rl encoder angle", m_backLeft.getAbsoluteEncoder());
+    SmartDashboard.putNumber("rr encoder angle", m_backRight.getAbsoluteEncoder());
   }
 
   public void updateOdometry() {
 
     SmartDashboard.putString(("EstPosn"), getEstimatedPose().toString());
     SmartDashboard.putString(("FLModPos"), m_frontLeft.getPosition().toString());
-    SmartDashboard.putNumber(("FLDrPos"), m_frontLeft.getDrivePosition());
+    //SmartDashboard.putNumber(("FLDrPos"), m_frontLeft.getDrivePosition());
 
-    if (checkCANOK()) {
+    if (true) {
 
       /** Updates the field relative position of the robot. */
 
@@ -303,21 +330,21 @@ public class DriveSubsystem extends SubsystemBase {
     return Rotation2d.fromDegrees(getHeadingDegrees());
   }
 
-  public boolean checkCANOK() {
-    return RobotBase.isSimulation() ||
-        m_frontLeft.checkCAN()
-            && m_frontRight.checkCAN()
-            && m_backLeft.checkCAN()
-            && m_backLeft.checkCAN();
+  // public boolean checkCANOK() {
+  //   return RobotBase.isSimulation() ||
+  //       m_frontLeft.checkCAN()
+  //           && m_frontRight.checkCAN()
+  //           && m_backLeft.checkCAN()
+  //           && m_backLeft.checkCAN();
 
-  }
+  // }
 
-  public void resetModuleEncoders() {
-    m_frontLeft.resetAngleToAbsolute();
-    m_frontRight.resetAngleToAbsolute();
-    m_backLeft.resetAngleToAbsolute();
-    m_backRight.resetAngleToAbsolute();
-  }
+  // public void resetModuleEncoders() {
+  //   m_frontLeft.resetAngleToAbsolute();
+  //   m_frontRight.resetAngleToAbsolute();
+  //   m_backLeft.resetAngleToAbsolute();
+  //   m_backRight.resetAngleToAbsolute();
+  // }
 
   /** Zeroes the heading of the robot. */
   public void resetGyro() {
@@ -366,14 +393,14 @@ public class DriveSubsystem extends SubsystemBase {
 
   public void setIdleMode(boolean brake) {
 
-    m_frontLeft.setDriveBrakeMode(brake);
-    m_frontLeft.setTurnBrakeMode(brake);
-    m_frontRight.setDriveBrakeMode(brake);
-    m_frontRight.setTurnBrakeMode(brake);
-    m_backLeft.setDriveBrakeMode(brake);
-    m_backLeft.setTurnBrakeMode(brake);
-    m_backRight.setDriveBrakeMode(brake);
-    m_backRight.setTurnBrakeMode(brake);
+    // m_frontLeft.setDriveBrakeMode(brake);
+    // m_frontLeft.setTurnBrakeMode(brake);
+    // m_frontRight.setDriveBrakeMode(brake);
+    // m_frontRight.setTurnBrakeMode(brake);
+    // m_backLeft.setDriveBrakeMode(brake);
+    // m_backLeft.setTurnBrakeMode(brake);
+    // m_backRight.setDriveBrakeMode(brake);
+    // m_backRight.setTurnBrakeMode(brake);
 
   }
 

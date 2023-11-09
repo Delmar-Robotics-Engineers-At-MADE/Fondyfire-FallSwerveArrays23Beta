@@ -11,6 +11,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+
 import edu.wpi.first.cameraserver.CameraServer;
 
 /**
@@ -71,7 +75,7 @@ public class Robot extends TimedRobot {
 
     lpctra++;
 
-    m_robotContainer.periodic();
+   // m_robotContainer.periodic();
 
     m_robotContainer.m_drive.throttleValue = m_robotContainer.getThrottle();
 
@@ -115,11 +119,14 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
+    
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
+    TalonFX intake = new TalonFX(5);
+    intake.set(ControlMode.PercentOutput, -1);
   }
 
   @Override
@@ -156,10 +163,10 @@ public class Robot extends TimedRobot {
     // m_robotContainer.m_ls.lightsaber(true);
   }
 
-  @Override
-  public void simulationPeriodic() {
-    m_robotContainer.m_fieldSim.periodic();
-    m_robotContainer.simulationPeriodic();
-  }
+  // @Override
+  // public void simulationPeriodic() {
+  //   m_robotContainer.m_fieldSim.periodic();
+  //   m_robotContainer.simulationPeriodic();
+  // }
 
 }
