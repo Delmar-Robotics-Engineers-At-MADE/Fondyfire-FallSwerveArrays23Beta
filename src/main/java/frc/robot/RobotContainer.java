@@ -10,8 +10,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
+import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.PusherOpenLoop;
 import frc.robot.commands.RunIntake;
@@ -19,12 +22,15 @@ import frc.robot.commands.StopIntake;
 import frc.robot.commands.StopPusher;
 import frc.robot.commands.ToggleFieldOriented;
 import frc.robot.commands.Vision.SetDriverMode;
+import frc.robot.commands.Vision.StrafeToGamePiece;
 // import frc.robot.commands.swerve.JogDriveModule;
 // import frc.robot.commands.swerve.JogTurnModule;
 import frc.robot.commands.swerve.SetSwerveDrive;
 //import frc.robot.simulation.FieldSim;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.Optical;
 import frc.robot.subsystems.Pusher;
 import frc.robot.subsystems.VisionPoseEstimator;
 import frc.robot.utils.AutoSelect;
@@ -44,6 +50,9 @@ public class RobotContainer {
   public Intake intake = new Intake();
 
   public Pusher pusher = new Pusher();
+
+  final Limelight limelight = new Limelight();
+  final Optical optical = new Optical();
 
   LEDControllerI2C lcI2;
 
@@ -145,7 +154,7 @@ public class RobotContainer {
     JoystickButton intakeOut = new JoystickButton(leftJoystick, 5);
     POVButton pusherDeploy = new POVButton(leftJoystick, 180);
     POVButton pusherRetract = new POVButton(leftJoystick, 0);
-
+    JoystickButton runDemo = new JoystickButton(leftJoystick, 2);
 
 
     //subsystem commands
@@ -158,6 +167,8 @@ public class RobotContainer {
     pusher.setDefaultCommand(new StopPusher(pusher));
     pusherDeploy.whileTrue(new PusherOpenLoop(true, pusher));
     pusherRetract.whileTrue(new PusherOpenLoop(false, pusher));
+
+    runDemo.whileTrue(futbol);
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_drive,
     // ModulePosition.FRONT_LEFT));
@@ -168,7 +179,19 @@ public class RobotContainer {
     // driver.Y_button.whenPressed(new PositionTurnModule(m_drive,
     // ModulePosition.BACK_RIGHT));
 
+
+
   }
+  private final ParallelCommandGroup collect = new ParallelCommandGroup(
+    new StrafeToGamePiece(DriveConstants.kDemoSpeedMetersPerSecond, limelight, m_drive, intake, optical),
+    new RunIntake(false, intake)
+  );
+
+  private final SequentialCommandGroup futbol = new SequentialCommandGroup(
+    collect,
+    new StopIntake(intake),
+    new RunIntake(true, intake)
+  );
 
   // public void simulationPeriodic() {
 

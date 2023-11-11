@@ -125,6 +125,7 @@ public final class Constants {
     public static final double kaVoltSecondsSquaredPerMeter = 0.15;
 
     public static final double kMaxSpeedMetersPerSecond = 3;
+    public static final double kDemoSpeedMetersPerSecond = 0.5;
 
     public static final double kMaxRotationRadiansPerSecond = Math.PI;
     public static final double kMaxRotationRadiansPerSecondSquared = Math.PI;
@@ -135,12 +136,16 @@ public final class Constants {
     public static final double kD_Y = 0;
     public static final double kP_Theta = 8;
     public static final double kD_Theta = 0;
+    public static final double kMaxYawRateDegPerS = 0;
+    public static final double kMaxYawAccelerationDegPerSSquared = 0;
     public static double kTranslationSlew = 1.55;
     public static double kRotationSlew = 3.00;
     public static double kControllerDeadband = .05;
     public static double kControllerRotDeadband = .1;
 
     public static double kVoltCompensation = 12.6;
+    public static double kYawP = 0.011;
+    public static double kYawD = 0.012;
 
     // public static final double kMaxRotationRadiansPerSecond =
     // Math.hypot(DriveConstants.kTrackWidth / 2.0,
@@ -282,5 +287,21 @@ public final class Constants {
     public static final double kHomePos = 0.0;
     public static final double kLimit = 5;
     public static final double kPushPos = 5;
+  }
+
+  public static final class CameraConstants {
+    // Turn to Gamepiece
+    public static final double kGamepieceCenterPos = -10.5;
+    public static final double CAMERA_HEIGHT_METERS = 0.9;
+    public static final double TARGET_HEIGHT_METERS = 0.31;
+    public static final double CAMERA_PITCH_RADIANS = -0.436;
+    // public static final double kSummerAprilTagDistance = 2.5; // meters
+    // public static final double kSummerAprilTagDistanceBackup = 1.5; // meters
+    // public static final double kSummerSearchForAprilTagYaw = -10; // degrees
+    
+  }
+
+  public static final class OpticalConstants {
+    public static final int DIO = 0;
   }
 }

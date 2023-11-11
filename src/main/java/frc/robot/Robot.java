@@ -16,6 +16,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.net.PortForwarder;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -49,7 +50,9 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-
+    for (int port = 5800; port <= 5807; port++) {
+      PortForwarder.add(port, "limelight.local", port);
+    }
   }
 
   /**
