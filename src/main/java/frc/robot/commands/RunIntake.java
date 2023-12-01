@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.IntakeConstants;
 import frc.robot.subsystems.Intake;
 
 public class RunIntake extends CommandBase {
@@ -26,10 +27,10 @@ public class RunIntake extends CommandBase {
   @Override
   public void execute() {
     if (!reversed) {
-      intake.run(0.7);
+      intake.run(IntakeConstants.inSpeed);
     }
     else {
-      intake.run(-0.7);
+      intake.run(IntakeConstants.outSpeed);
     }
   }
 

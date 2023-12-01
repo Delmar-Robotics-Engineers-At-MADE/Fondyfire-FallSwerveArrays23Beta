@@ -125,7 +125,7 @@ public final class Constants {
     public static final double kaVoltSecondsSquaredPerMeter = 0.15;
 
     public static final double kMaxSpeedMetersPerSecond = 3;
-    public static final double kDemoSpeedMetersPerSecond = 0.5;
+    public static final double kDemoSpeedMetersPerSecond = 20;
 
     public static final double kMaxRotationRadiansPerSecond = Math.PI;
     public static final double kMaxRotationRadiansPerSecondSquared = Math.PI;
@@ -138,8 +138,8 @@ public final class Constants {
     public static final double kD_Theta = 0;
     public static final double kMaxYawRateDegPerS = 0;
     public static final double kMaxYawAccelerationDegPerSSquared = 0;
-    public static double kTranslationSlew = 1.55;
-    public static double kRotationSlew = 3.00;
+    public static double kTranslationSlew = 6;
+    public static double kRotationSlew = 12;
     public static double kControllerDeadband = .05;
     public static double kControllerRotDeadband = .1;
 
@@ -279,8 +279,8 @@ public final class Constants {
 
   public static final class IntakeConstants {
     public static final int ID = 5;
-    public static final double inSpeed = 0.7;
-    public static final double outSpeed = 0.7;
+    public static final double inSpeed = 0.3;
+    public static final double outSpeed = -0.7;
   }
 
   public static final class PusherConstants {

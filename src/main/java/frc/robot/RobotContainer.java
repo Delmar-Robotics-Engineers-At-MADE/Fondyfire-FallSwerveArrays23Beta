@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -18,6 +19,7 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.PusherOpenLoop;
 import frc.robot.commands.RunIntake;
+import frc.robot.commands.StaticDemo;
 import frc.robot.commands.StopIntake;
 import frc.robot.commands.StopPusher;
 import frc.robot.commands.ToggleFieldOriented;
@@ -153,8 +155,10 @@ public class RobotContainer {
     JoystickButton intakeIn= new JoystickButton(leftJoystick, 6);
     JoystickButton intakeOut = new JoystickButton(leftJoystick, 5);
     POVButton pusherDeploy = new POVButton(leftJoystick, 180);
-    POVButton pusherRetract = new POVButton(leftJoystick, 0);
-    JoystickButton runDemo = new JoystickButton(leftJoystick, 2);
+    POVButton resetGyro = new POVButton(leftJoystick, 0);
+    JoystickButton runStrafeDemo = new JoystickButton(leftJoystick, 2);
+    JoystickButton runStaticDemo = new JoystickButton(leftJoystick, 1);
+    
 
 
     //subsystem commands
@@ -166,9 +170,13 @@ public class RobotContainer {
 
     pusher.setDefaultCommand(new StopPusher(pusher));
     pusherDeploy.whileTrue(new PusherOpenLoop(true, pusher));
-    pusherRetract.whileTrue(new PusherOpenLoop(false, pusher));
+    //pusherRetract.whileTrue(new PusherOpenLoop(false, pusher));
 
-    runDemo.whileTrue(futbol);
+    runStrafeDemo.whileTrue(futbol);
+    runStaticDemo.whileTrue(new StaticDemo(intake, optical));
+
+    resetGyro.onTrue(new InstantCommand(() -> m_drive.resetGyro()));
+
     // position turn modules individually
     // driver.X_button.whenPressed(new PositionTurnModule(m_drive,
     // ModulePosition.FRONT_LEFT));

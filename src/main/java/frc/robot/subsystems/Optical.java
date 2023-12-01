@@ -13,4 +13,6 @@ public class Optical extends SubsystemBase{
     public boolean getState() {
         return sensor.get();
     }
+
+    
 }

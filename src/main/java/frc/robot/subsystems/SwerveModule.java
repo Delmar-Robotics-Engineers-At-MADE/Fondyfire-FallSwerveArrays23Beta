@@ -48,7 +48,7 @@ public class SwerveModule extends SubsystemBase {
         azimuthEncoder.setVelocityConversionFactor(1/(ModuleConstants.mk4iL1TurnGearRatio)*2*Math.PI/60);
         azimuthEncoder.setPositionConversionFactor(1/(ModuleConstants.mk4iL1TurnGearRatio)*2*Math.PI);
         drivePIDController.setP(0.0001);
-        drivePIDController.setFF(1/DriveConstants.kMaxSpeedMetersPerSecond);
+        drivePIDController.setFF(1/ DriveConstants.kMaxSpeedMetersPerSecond);
         azimuthPIDController.setP(3.0);
         azimuthEncoder.setPosition(getAbsoluteEncoder());
         driveMotor.burnFlash();
